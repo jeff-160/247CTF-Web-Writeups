@@ -1,8 +1,3 @@
-upload phar archive as image -> trigger phar deserialization with xxe
-
-find / -name f*  -> flag in temp
-cat /tmp/fl*
-
 ## MEME UPLOAD SERVICE  
 
 <img src="images/chall.png" width=600>

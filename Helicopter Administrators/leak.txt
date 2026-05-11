@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/static/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="/static/style.css" rel="stylesheet">
+  <script src="/static/jquery.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+  <script src="/static/script.js"></script>
+  <title>Administrator's profile</title>
+</head>
+<body>
+  <div class="main-content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <ul class="navbar-nav mr-auto">
+       <li class="nav-item active">
+        <a class="nav-link" href="http://127.0.0.1:5000/user/0">Admin</a>
+      </li> |
+      <li class="nav-item ">
+        <a class="nav-link" href="http://127.0.0.1:5000/user/1">User 1</a>
+      </li> | 
+      <li class="nav-item ">
+        <a class="nav-link" href="http://127.0.0.1:5000/user/2">User 2</a>
+      </li> |
+      <li class="nav-item ">
+        <a class="nav-link" href="http://127.0.0.1:5000/user/3">User 3</a>
+      </li>
+    </ul>
+  </nav>
+  
+  
+  
+  <div class="container mt-7">
+    <div class="row">
+      <div class="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
+        <div class="card card-profile shadow">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <img src="/static/img.svg" class="rounded-circle circle-size">
+              </div>
+            </div>
+          </div>
+          <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-2">
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-sm btn-default mr-4 p-2" data-toggle="modal" data-target="#commentModal">Comment</button>
+              <button type="button" class="btn btn-sm btn-default float-right p-2" data-toggle="modal" data-target="#reportModal">Report</button>
+            </div>
+          </div>
+          <div class="card-body pt-0 pt-md-2">
+            <div class="row">
+              <div class="col">
+                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                  <div>
+                    <span class="heading">100</span>
+                    <span class="description">Friends</span>
+                  </div>
+                  <div>
+                    <span class="heading">100</span>
+                    <span class="description">Likes</span>
+                  </div>
+                  <div>
+                    <span class="heading">100</span>
+                    <span class="description">Shares</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3>
+                Administrator
+              </h3>
+              <div class="h5 font-weight-300">
+                <i class="ni mr-2"></i>New York, USA
+              </div>
+              
+              <div class="mt-25">
+                <form class="navbar-form" method="POST" action="/secret_admin_search" comment="#search-response">
+                  <div id="search-response" class="description"></div>
+                  <div class="input-group">    
+                    <input type="text" class="form-control description" id="search" name="search">
+                    <span class="input-group-btn">
+                      <input type="submit" class="btn btn-default search" value="User ID Search">
+                    </span> 
+                  </div>
+                </form>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLongTitle">Create Comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form role="form" method="POST" action="/comment/0" id="comment_form" comment="#comment-response">
+       <div id="comment-response" class="mt-4 ml-4 mr-4"></div>
+       <div class="modal-body comment">
+         Submit a comment to be displayed on the user's profile:
+         <div class="form-group"><textarea class="form-control" id="comment" name="comment" rows="5"></textarea></div>
+       </div>
+       <div class="modal-footer justify-content-between">
+        <input type="submit" class="btn btn-default btn-sm p-2" value="Submit Comment">
+        <button type="button" class="btn btn-default btn-sm p-2" data-dismiss="modal">Close Comment</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reportModalLongTitle">Report User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form role="form" method="GET" action="/report/0" id="report_form" comment="#report-response">
+        <div id="report-response" class="mt-4 ml-4 mr-4"></div>
+        <div class="modal-body">
+          <p class="comment">Are you sure you want to report this user?</p>
+          <p class="comment">An administrator will investigate all reported profiles for inappropriate content.</p>
+          <p class="comment font-italic mt-3">Note:
+            <ul>
+              <li class="comment font-italic sized">Administrators are security conscious, they access the site from an internal system on an internal network which does not have outbound Internet access</li>
+              <li class="comment font-italic sized">Administrators are aggressive, once they have viewed a profile all comments will be deleted</li>
+              <li class="comment font-italic sized">Administrators are active, they will review all reported profiles immediately</li>
+              <li class="comment font-italic sized">Administrators are impatient, they will not spend more than a few seconds on a profile</li>
+              <li class="comment font-italic sized">Administrators are lazy, they will not interact with the profile, but they will view it</li>
+              <li class="comment font-italic sized">Administrators are memory hungry, they always use Chrome based browsers</li>
+              <li class="comment font-italic sized">Administrators are simple, they don't like fancy HTML animations</li>
+            </ul>
+          </p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <input type="submit" class="btn btn-default btn-sm p-2" value="Submit Report">
+          <button type="button" class="btn btn-default btn-sm p-2" data-dismiss="modal">Close Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
